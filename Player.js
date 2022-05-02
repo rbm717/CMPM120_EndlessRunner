@@ -33,15 +33,16 @@ class Player extends Phaser.GameObjects.Sprite {
         if (Phaser.Input.Keyboard.JustDown(keyDown) && !this.isCrouching) {
             this.isCrouching = true;
             this.moveSpeed = this.crouchSpeed;
-            this.height /= 2;
-            this.setScale(0.25);
-            //this.setTexture(this.backupTexture, 0);
+            //this.height /= 2;
+            //this.setScale(0.25);
+            //CHANGE FRAME TO CROUCHING 
         }
         if (Phaser.Input.Keyboard.JustUp(keyDown) && this.isCrouching) {
             this.isCrouching = false;
             this.moveSpeed = this.standSpeed;
-            this.height *= 2;
-            this.setScale(0.5);
+            //this.height *= 2;
+            //this.setScale(0.5);
+            //CHANGE FRAME TO NOT CROUCHING 
         }
 
     }
