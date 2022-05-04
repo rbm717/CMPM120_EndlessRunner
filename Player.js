@@ -10,18 +10,19 @@ class Player extends Phaser.GameObjects.Sprite {
         this.crouchSpeed = 1;
         this.jumpForce = -600;
         this.isCrouching = false;
-        this.rightLimit = 20; //limits the player from going too far to the right, higher value = higher limit
+        this.rightLimit = 350; //limits the player from going too far to the right, higher value = higher limit
         this.pushFactor = 2;
         this.backupTexture = backupTexture;
     }
 
 
     update() {
-        if (keyLEFT.isDown && this.x >= borderUISize + this.width) {
+        if (keyLEFT.isDown && this.x >= borderUISize){//} + this.width) {
             this.x -= this.moveSpeed;
         }
-        else if (keyRIGHT.isDown && this.x <= game.config.width -
-            borderUISize - this.width - this.rightLimit) {
+        /*else if (keyRIGHT.isDown && this.x <= game.config.width -
+            borderUISize - this.width - this.rightLimit) {*/
+        else if(keyRIGHT.isDown && this.x <= game.config.width - this.rightLimit){
             this.x += this.moveSpeed;
         }
 
@@ -35,14 +36,13 @@ class Player extends Phaser.GameObjects.Sprite {
             this.moveSpeed = this.crouchSpeed;
             //this.height /= 2;
             //this.setScale(0.25);
-            //CHANGE FRAME TO CROUCHING 
+            this.setTexture(this.backupTexture, 0);
         }
         if (Phaser.Input.Keyboard.JustUp(keyDown) && this.isCrouching) {
             this.isCrouching = false;
             this.moveSpeed = this.standSpeed;
-            //this.height *= 2;
-            //this.setScale(0.5);
-            //CHANGE FRAME TO NOT CROUCHING 
+            this.height *= 2;
+            this.setScale(0.5);
         }
 
     }

@@ -20,4 +20,7 @@ let borderPadding = borderUISize / 3;
 let keySpace, keyLEFT, keyRIGHT, keyUp, keyDown;
 // Keep track of object spawning
 let maxNumObjs;
+let maxNumObjsOnScreen;
 let numObjs;
+let spawnTime;
+let colliderSpeed;

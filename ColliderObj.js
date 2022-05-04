@@ -11,13 +11,15 @@ class ColliderObj extends Phaser.GameObjects.Sprite {
 
     update(){
       //move object left
-      this.x -= this.moveSpeed;
+      if(this.onScreen){
+        this.x -= this.moveSpeed;
+      }
       //wraps object back around to right side
       if(this.x <= 0 - this.width){
           this.onScreen = false;
-          this.x = game.config.width;
+          /*this.x = game.config.width;
           this.y = this.yReset;
-          this.body.setVelocityY(0);
+          this.body.setVelocityY(0);*/
       }
     }
 
@@ -26,5 +28,9 @@ class ColliderObj extends Phaser.GameObjects.Sprite {
       this.y = this.yReset;
       this.body.setVelocityY(0);
       this.onScreen = true;
+    }
+
+    isOnScreen(){
+      return this.onScreen;
     }
 }
